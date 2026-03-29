@@ -1,5 +1,6 @@
 const nodemailer = require("nodemailer");
 const bcrypt = require("bcryptjs");
+const appModel = require("../models/Apps");
 
 module.exports = async (user, mailType, appType) => {
   try {
@@ -34,8 +35,22 @@ module.exports = async (user, mailType, appType) => {
     // await token.save();
 
     let emailContent, mailOptions;
+
+    let appLink;
+
+    let appAvailable = await appModel.findOne({
+      appName: appType
+    });
+
+    if(!appAvailable){
+        return null;
+    }
+    else{
+       appLink = appAvailable.appLinkURL;
+    }
+
     if (mailType == "verifyemail") {
-      emailContent = `<div><h1>Please click on the below link to verify your email address</h1> <a href="https://music-player-website.onrender.com/verifyemail/${encryptedToken}">${encryptedToken}</a>  </div>`;
+      emailContent = `<div><h1>Please click on the below link to verify your email address</h1> <a href="${appLink}/verifyemail/${encryptedToken}">${encryptedToken}</a>  </div>`;
 
       mailOptions = {
         from: process.env.SEND_EMAIL,
@@ -44,7 +59,7 @@ module.exports = async (user, mailType, appType) => {
         html: emailContent,
       };
     } else {
-      emailContent = `<div><h1>Please click on the below link to reset your password</h1> <a href="https://music-player-website.onrender.com/resetpassword/${encryptedToken}">${encryptedToken}</a>  </div>`;
+      emailContent = `<div><h1>Please click on the below link to reset your password</h1> <a href="${appLink}/resetpassword/${encryptedToken}">${encryptedToken}</a>  </div>`;
 
       mailOptions = {
         from: process.env.SEND_EMAIL,

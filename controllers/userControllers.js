@@ -5,12 +5,21 @@ const sendPasswordResetLink = async (req, res) => {
     const user = req.body.user;
     const appType = req.body.appType;
     if (user) {
-      await sendEmail(user, "resetpassword", appType);
-      res.send({
-        success: true,
-        message: `Password reset link sent to your email : ${user.email} successfully.`,
-        data: null,
-      });
+      const token = await sendEmail(user, "resetpassword", appType);
+      if (token) {
+        res.send({
+          success: true,
+          message: `Password reset link sent to your email : ${user.email} successfully.`,
+          data: null,
+        });
+      }
+      else {
+        res.send({
+          success: false,
+          message: `App with appType : ${appType} doesn't exists.`,
+          data: null,
+        });
+      }
     } else {
       res.send({
         success: false,
@@ -33,12 +42,21 @@ const verifyEmailLink = async (req, res) => {
     const appType = req.body.appType;
     if (user) {
       if (!user.isVerified) {
-        await sendEmail(user, "verifyemail",appType);
-        res.send({
-          success: true,
-          message: `Account verification link sent to your email : ${user.email} successfully`,
-          data: null,
-        });
+        const token = await sendEmail(user, "verifyemail", appType);
+        if (token) {
+          res.send({
+            success: true,
+            message: `Account verification link sent to your email : ${user.email} successfully`,
+            data: null,
+          });
+        }
+        else {
+          res.send({
+            success: false,
+            message: `App with appType : ${appType} doesn't exists.`,
+            data: null,
+          });
+        }
       } else {
         res.send({
           success: false,
@@ -62,4 +80,4 @@ const verifyEmailLink = async (req, res) => {
   }
 };
 
-module.exports = {sendPasswordResetLink, verifyEmailLink};
+module.exports = { sendPasswordResetLink, verifyEmailLink };
