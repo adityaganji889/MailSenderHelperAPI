@@ -10,7 +10,7 @@ const sendPasswordResetLink = async (req, res) => {
         res.send({
           success: true,
           message: `Password reset link sent to your email : ${user.email} successfully.`,
-          data: null,
+          data: token,
         });
       }
       else {
@@ -47,7 +47,7 @@ const verifyEmailLink = async (req, res) => {
           res.send({
             success: true,
             message: `Account verification link sent to your email : ${user.email} successfully`,
-            data: null,
+            data: token,
           });
         }
         else {
