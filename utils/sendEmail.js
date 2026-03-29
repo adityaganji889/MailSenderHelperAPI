@@ -1,13 +1,13 @@
 const nodemailer = require("nodemailer");
 const bcrypt = require("bcryptjs");
 
-module.exports = async (user, mailType) => {
+module.exports = async (user, mailType, appType) => {
   try {
     const transporter = nodemailer.createTransport({
       service: "gmail",
       host: "smtp.gmail.com",
       port: 587,
-      secure: true,
+      secure: false,
       auth: {
         user: process.env.SEND_EMAIL,
         pass: process.env.PASS_KEY,
@@ -40,7 +40,7 @@ module.exports = async (user, mailType) => {
       mailOptions = {
         from: process.env.SEND_EMAIL,
         to: user.email,
-        subject: "Verify Email For MERN Music Player Auth",
+        subject: `Verify Email For ${appType}`,
         html: emailContent,
       };
     } else {
@@ -49,7 +49,7 @@ module.exports = async (user, mailType) => {
       mailOptions = {
         from: process.env.SEND_EMAIL,
         to: user.email,
-        subject: "Reset password For MERN Music Player Auth",
+        subject: `Reset password For ${appType}`,
         html: emailContent,
       };
     }
