@@ -91,7 +91,7 @@ const feedbackMail = async(req,res) => {
       if (token) {
         res.send({
           success: true,
-          message: `Password reset link sent to your email : ${user.email} successfully.`,
+          message: `Feedback mail sent to user email : ${user.email} successfully.`,
           data: token,
         });
       }
@@ -105,7 +105,7 @@ const feedbackMail = async(req,res) => {
     } else {
       res.send({
         success: false,
-        message: `Account with email : ${user.email} does not exists.`,
+        message: `Feedback with email : ${user.email} does not exists.`,
         data: null,
       });
     }
