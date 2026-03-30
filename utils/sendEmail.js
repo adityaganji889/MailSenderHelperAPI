@@ -39,7 +39,7 @@ const sendEmail = async (user, mailType, appType, otp) => {
     let appLink;
 
     let appAvailable = await appModel.findOne({
-      appName: appType
+      appName: { $regex: `${appType.trim()}$`, $options: "i"}
     });
 
     if (!appAvailable) {
