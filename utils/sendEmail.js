@@ -2,7 +2,7 @@ const nodemailer = require("nodemailer");
 const bcrypt = require("bcryptjs");
 const appModel = require("../models/Apps");
 
-const sendEmail = async (user, mailType, appType) => {
+const sendEmail = async (user, mailType, appType, otp) => {
   try {
     const transporter = nodemailer.createTransport({
       service: "gmail",
@@ -58,13 +58,31 @@ const sendEmail = async (user, mailType, appType) => {
         subject: `Verify Email For ${appType}`,
         html: emailContent,
       };
-    } else {
+    } else if(mailType == "resetpassword"){
       emailContent = `<div><h1>Please click on the below link to reset your password</h1> <a href="${appLink}/resetpassword/${encryptedToken}">${encryptedToken}</a>  </div>`;
 
       mailOptions = {
         from: process.env.SEND_EMAIL,
         to: user.email,
         subject: `Reset password For ${appType}`,
+        html: emailContent,
+      };
+    }
+    else if (mailType == "generateOTP") {
+      emailContent = `<div>Your OTP for reset password/verify newly updated email is: ${otp}, will expire in next 10 mins.</div>`;
+      mailOptions = {
+        from: process.env.SEND_EMAIL,
+        to: user.email,
+        subject: `Password Reset/Verify Newly Updated Email For Blogging API Auth`,
+        html: emailContent,
+      };
+    }
+    else if (mailType == "verifyemailotp") {
+      emailContent = `<div>Your OTP to verify email is:${otp}, will expire in next 10 mins.</div>`;
+      mailOptions = {
+        from: process.env.SEND_EMAIL,
+        to: user.email,
+        subject: `Verify Email For Blogging API Auth`,
         html: emailContent,
       };
     }
