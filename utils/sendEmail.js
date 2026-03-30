@@ -73,7 +73,7 @@ const sendEmail = async (user, mailType, appType, otp) => {
       mailOptions = {
         from: process.env.SEND_EMAIL,
         to: user.email,
-        subject: `Password Reset/Verify Newly Updated Email For Blogging API Auth`,
+        subject: `Password Reset/Verify Newly Updated Email For ${appType}`,
         html: emailContent,
       };
     }
@@ -82,7 +82,7 @@ const sendEmail = async (user, mailType, appType, otp) => {
       mailOptions = {
         from: process.env.SEND_EMAIL,
         to: user.email,
-        subject: `Verify Email For Blogging API Auth`,
+        subject: `Verify Email For ${appType}`,
         html: emailContent,
       };
     }
