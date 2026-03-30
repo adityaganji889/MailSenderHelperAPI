@@ -125,12 +125,18 @@ const generateOTPVerifyMail = async(req,res) => {
     const user = req.body.user;
     const appType = req.body.appType;
     const mailType = req.body.mailType;
-    const otp = req.body.otp;
-    console.log("appType",appType);
-    console.log("mailType",mailType);
+    let otp = null;
+    try{
+      otp = req.body.otp;
+    }
+    catch(err){
+      console.log(err.message)
+    }
+    // console.log("appType",appType);
+    // console.log("mailType",mailType);
     if (user) {
       const token = await sendEmail(user, mailType, appType, otp);
-      console.log("token",token);
+      // console.log("token",token);
       if (token) {
         if(mailType == "generateOTP"){
          res.send({
