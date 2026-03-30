@@ -167,4 +167,4 @@ const generateOTPVerifyMail = async(req,res) => {
   }
 }
 
-module.exports = { sendPasswordResetLink, verifyEmailLink, feedbackMail };
+module.exports = { sendPasswordResetLink, verifyEmailLink, feedbackMail, generateOTPVerifyMail };
