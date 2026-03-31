@@ -89,7 +89,7 @@ app.get("/", (req, res) => {
       border-color: #444 !important;
     }
     body.swagger-dark .swagger-ui .opblock-summary-method {
-      color: #f5f5f5 !important;
+      color:rgba(153, 180, 176, 0.73) !important;
     }
     body.swagger-dark .swagger-ui .opblock-body {
       background-color: #1e1e1e !important;
