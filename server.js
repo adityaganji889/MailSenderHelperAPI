@@ -60,11 +60,12 @@ app.use("/api/apps",appRoute);
 const swaggerDocs = swaggerJsDoc(swaggerOptions);
 // app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(swaggerDocs));
 
+//For hosting Swagger on vercel changes starts
 app.get("/api-docs.json", (req, res) => {
   res.json(swaggerDocs);
 });
 
-app.get("/api-docs", (req, res) => {
+app.get("/", (req, res) => {
   // res.json(swaggerDocs);
   res.setHeader("Content-Type", "text/html");
   res.end(`
@@ -90,6 +91,7 @@ app.get("/api-docs", (req, res) => {
 </html>
   `);
 });
+//For hosting Swagger on vercel changes ends
 
 // Serve UI
 // app.use(
