@@ -78,7 +78,7 @@ app.get("/", (req, res) => {
     /* Dark Mode CSS */
     body.swagger-dark .swagger-ui {
       background-color: #1e1e1e !important;
-      color: #f5f5f5 !important;
+      color:rgb(163, 151, 151) !important;
     }
     body.swagger-dark .swagger-ui .topbar {
       background-color: #000 !important;
@@ -89,7 +89,7 @@ app.get("/", (req, res) => {
       border-color: #444 !important;
     }
     body.swagger-dark .swagger-ui .opblock-summary-method {
-      color:rgba(153, 180, 176, 0.73) !important;
+      color:rgba(226, 235, 233, 0.87) !important;
     }
     body.swagger-dark .swagger-ui .opblock-body {
       background-color: #1e1e1e !important;
