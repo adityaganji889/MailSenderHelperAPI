@@ -95,6 +95,18 @@ app.get("/", (req, res) => {
       background-color: #1e1e1e !important;
     }
 
+    body.swagger-dark .swagger-ui .scheme-container {
+      background-color: #2c2c2c !important;
+      border-color: #444 !important;
+      color:rgba(226, 235, 233, 0.87) !important;
+    }
+
+    body.swagger-ui .opblock .opblock-section-header {
+      background-color: #2c2c2c !important;
+      border-color: #444 !important;
+      color:rgba(226, 235, 233, 0.87) !important;
+    }
+
     /* Dark Mode Toggle Button */
     #darkModeToggle {
       position: fixed;
