@@ -72,7 +72,7 @@ app.get("/", (req, res) => {
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Swagger</title>
+  <title>Mail Sender Helper API Swagger Open API</title>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swagger-ui-dist/swagger-ui.css" />
 </head>
 <body>
