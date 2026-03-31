@@ -43,11 +43,11 @@ const swaggerOptions = {
         {
           url: "http://localhost:5000/",
           description: "Localhost development server"
+        },
+        {
+          url: "https://mail-sender-helper-api.vercel.app",
+          description: "Remote deployment on vercel.app"
         }
-        // {
-        //   url: "https://blogging-platform-og12.onrender.com",
-        //   description: "Remote deployment on render.com"
-        // }
       ],
   },
   apis: ["./routes/*.js"],
