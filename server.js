@@ -78,7 +78,7 @@ app.get("/", (req, res) => {
     /* Dark Mode CSS */
     body.swagger-dark .swagger-ui {
       background-color: #1e1e1e !important;
-      color:rgb(163, 151, 151) !important;
+      color:rgb(226, 216, 216) !important;
     }
     body.swagger-dark .swagger-ui .topbar {
       background-color: #000 !important;
@@ -101,7 +101,7 @@ app.get("/", (req, res) => {
       color:rgba(226, 235, 233, 0.87) !important;
     }
 
-    body.swagger-ui .opblock .opblock-section-header {
+    .swagger-ui .opblock .opblock-section-header {
       background-color: #2c2c2c !important;
       border-color: #444 !important;
       color:rgba(226, 235, 233, 0.87) !important;
