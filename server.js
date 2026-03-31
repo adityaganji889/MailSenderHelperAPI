@@ -76,6 +76,10 @@ app.get("/", (req, res) => {
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swagger-ui-dist/swagger-ui.css" />
   <style>
     /* Dark Mode CSS */
+    .swagger-ui {
+      color: #fff !important
+    }
+
     body.swagger-dark .swagger-ui {
       background-color: #1e1e1e !important;
       color: #fff !important;
