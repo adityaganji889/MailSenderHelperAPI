@@ -66,7 +66,7 @@ app.get("/api-docs.json", (req, res) => {
 });
 
 app.get("/", (req, res) => {
-  // res.json(swaggerDocs);
+//   // res.json(swaggerDocs);
   res.setHeader("Content-Type", "text/html");
   res.end(`
 <!DOCTYPE html>
@@ -92,17 +92,6 @@ app.get("/", (req, res) => {
   `);
 });
 //For hosting Swagger on vercel changes ends
-
-// Serve UI
-// app.use(
-//   "/api-docs",
-//   swaggerUi.serve,
-//   swaggerUi.setup(null, {
-//     swaggerOptions: {
-//       url: "/api-docs.json",
-//     },
-//   })
-// );
 
 app.listen(port,()=>{
     console.log(`Server is running on port : ${port}`);
