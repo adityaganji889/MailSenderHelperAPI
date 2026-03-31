@@ -58,7 +58,21 @@ app.use("/api/users",userRoute);
 app.use("/api/apps",appRoute);
 
 const swaggerDocs = swaggerJsDoc(swaggerOptions);
-app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(swaggerDocs));
+// app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(swaggerDocs));
+app.get("/api-docs.json", (req, res) => {
+  res.json(swaggerDocs);
+});
+
+// Serve UI
+app.use(
+  "/api-docs",
+  swaggerUi.serve,
+  swaggerUi.setup(null, {
+    swaggerOptions: {
+      url: "/api-docs.json",
+    },
+  })
+);
 
 app.listen(port,()=>{
     console.log(`Server is running on port : ${port}`);
