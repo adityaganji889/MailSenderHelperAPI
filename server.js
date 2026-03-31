@@ -40,10 +40,10 @@ const swaggerOptions = {
     //     },
     //   ],
       servers: [
-        {
-          url: "http://localhost:5000/",
-          description: "Localhost development server"
-        },
+        // {
+        //   url: "http://localhost:5000/",
+        //   description: "Localhost development server"
+        // },
         {
           url: "https://mail-sender-helper-api.vercel.app",
           description: "Remote deployment on vercel.app"
