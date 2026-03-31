@@ -74,86 +74,18 @@ app.get("/", (req, res) => {
 <head>
   <title>Swagger</title>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swagger-ui-dist/swagger-ui.css" />
-  <style>
-    /* Dark Mode CSS */
-    .swagger-ui {
-      color: #fff !important
-    }
-
-    body.swagger-dark .swagger-ui {
-      background-color: #1e1e1e !important;
-      color: #fff !important;
-    }
-    body.swagger-dark .swagger-ui .topbar {
-      background-color: #000 !important;
-      color: #fff !important;
-    }
-    body.swagger-dark .swagger-ui .opblock {
-      background-color: #2c2c2c !important;
-      border-color: #444 !important;
-    }
-    body.swagger-dark .swagger-ui .opblock-summary-method {
-      color:rgba(226, 235, 233, 0.87) !important;
-    }
-    body.swagger-dark .swagger-ui .opblock-body {
-      background-color: #1e1e1e !important;
-    }
-
-    body.swagger-dark .swagger-ui .scheme-container {
-      background-color: #2c2c2c !important;
-      border-color: #444 !important;
-      color:rgba(226, 235, 233, 0.87) !important;
-    }
-
-    .swagger-ui .opblock .opblock-section-header {
-      background-color: #2c2c2c !important;
-      border-color: #444 !important;
-      color:rgba(226, 235, 233, 0.87) !important;
-    }
-
-    /* Dark Mode Toggle Button */
-    #darkModeToggle {
-      position: fixed;
-      top: 10px;
-      right: 10px;
-      z-index: 9999;
-      padding: 6px 12px;
-      background-color: #007bff;
-      color: #fff;
-      border: none;
-      border-radius: 4px;
-      cursor: pointer;
-      font-size: 14px;
-    }
-    #darkModeToggle:hover {
-      background-color: #0056b3;
-    }
-  </style>
 </head>
 <body>
-  <button id="darkModeToggle">Toggle Dark Mode</button>
   <div id="swagger-ui"></div>
 
   <script src="https://cdn.jsdelivr.net/npm/swagger-ui-dist/swagger-ui-bundle.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/swagger-ui-dist/swagger-ui-standalone-preset.js"></script>
   <script>
     window.onload = function() {
       SwaggerUIBundle({
         url: window.location.origin + '/api-docs.json',
-        dom_id: '#swagger-ui',
-        presets: [
-          SwaggerUIBundle.presets.apis,
-          SwaggerUIStandalonePreset
-        ],
-        layout: "BaseLayout",
-        deepLinking: true
+        dom_id: '#swagger-ui'
       });
     };
-     // Dark Mode toggle
-      const toggleButton = document.getElementById('darkModeToggle');
-      toggleButton.addEventListener('click', () => {
-        document.body.classList.toggle('swagger-dark');
-      });
   </script>
 </body>
 </html>
