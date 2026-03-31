@@ -5,6 +5,7 @@ const appSchema = mongoose.Schema(
     appName: {
       type: String,
       required: true,
+      unique: true
     },
     appLinkURL: {
       type: String,

@@ -7,6 +7,8 @@ require("dotenv").config({
 });
 const db = require("./config/db");
 const port = process.env.PORT || 5000
+const swaggerJsDoc = require("swagger-jsdoc");
+const swaggerUi = require("swagger-ui-express");
 const userRoute = require("./routes/userRoutes");
 const appRoute = require("./routes/appRoutes");
 
@@ -16,8 +18,47 @@ app.use(express.json({
 }));
 app.use(express.urlencoded({ extended: true }))
 
+const swaggerOptions = {
+  swaggerDefinition: {
+    openapi: "3.0.0",
+    info: {
+      title: "Mail Sender Helper API",
+      description:
+        "A REST API built with Express and MongoDB. This API provides registers apps having issue with SMTP while hosted on render and sends mail on it's behalf.",
+    },
+    // components: {
+    //     securitySchemes: {
+    //       bearerAuth: {
+    //         type: "http",
+    //         scheme: "bearer",
+    //       },
+    //     },
+    //   },
+    //   security: [
+    //     {
+    //       bearerAuth: [],
+    //     },
+    //   ],
+      servers: [
+        {
+          url: "http://localhost:5000/",
+          description: "Localhost development server"
+        }
+        // {
+        //   url: "https://blogging-platform-og12.onrender.com",
+        //   description: "Remote deployment on render.com"
+        // }
+      ],
+  },
+  apis: ["./routes/*.js"],
+};
+
+
 app.use("/api/users",userRoute);
 app.use("/api/apps",appRoute);
+
+const swaggerDocs = swaggerJsDoc(swaggerOptions);
+app.use("/", swaggerUi.serve, swaggerUi.setup(swaggerDocs));
 
 app.listen(port,()=>{
     console.log(`Server is running on port : ${port}`);

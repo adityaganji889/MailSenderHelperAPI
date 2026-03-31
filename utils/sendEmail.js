@@ -69,13 +69,24 @@ const sendEmail = async (user, mailType, appType, otp) => {
       };
     }
     else if (mailType == "generateOTP") {
-      emailContent = `<div>Your OTP for reset password/verify newly updated email is: ${otp}, will expire in next 10 mins.</div>`;
-      mailOptions = {
-        from: process.env.SEND_EMAIL,
-        to: user.email,
-        subject: `Password Reset/Verify Newly Updated Email For ${appType}`,
-        html: emailContent,
-      };
+      if(user?.subject && user?.text){
+         emailContent = `<div>${user.text}</div>`;
+         mailOptions = {
+          from: process.env.SEND_EMAIL,
+          to: user.email,
+          subject: user.subject,
+          html: emailContent,
+         };
+      }
+      else {
+         emailContent = `<div>Your OTP for reset password/verify newly updated email is: ${otp}, will expire in next 10 mins.</div>`;
+         mailOptions = {
+          from: process.env.SEND_EMAIL,
+          to: user.email,
+          subject: `Password Reset/Verify Newly Updated Email For ${appType}`,
+          html: emailContent,
+        };
+      }
     }
     else if (mailType == "verifyemailotp") {
       emailContent = `<div>Your OTP to verify email is:${otp}, will expire in next 10 mins.</div>`;
