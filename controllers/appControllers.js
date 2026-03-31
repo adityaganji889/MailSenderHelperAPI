@@ -39,7 +39,7 @@ const getExistingApp = async (req, res) => {
         } else {
             res.status(200).send({
                 success: true,
-                message: `Registered app with appName:${appL.name} and appLink:${appL.appLinkURL} fetched succesfully.`,
+                message: `Registered app with appName:${appL.appName} and appLink:${appL.appLinkURL} fetched succesfully.`,
                 data: appL,
             });
         }
