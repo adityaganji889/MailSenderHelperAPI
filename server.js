@@ -78,7 +78,7 @@ app.get("/", (req, res) => {
     /* Dark Mode CSS */
     body.swagger-dark .swagger-ui {
       background-color: #1e1e1e !important;
-      color:rgb(226, 216, 216) !important;
+      color: #fff !important;
     }
     body.swagger-dark .swagger-ui .topbar {
       background-color: #000 !important;
